@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WASM video Test</title>
+	<script type="text/javascript" src="WASMVideo.js"></script>
+	<script type="text/javascript">
+		var module = fetchAndCompile("play.wasm");
+
+		var importObject =
+		{
+			imports:
+			{
+				playVideo: vidplay
+			}
+		};
+	</script>
+</head>
+<body>
+
+	<video id="video13" autoplay>
+		<source src="demo.mp4" type="video/mp4">
+		HTML5 Video is required for this example.
+	</video>
+
+	<!--
+	<script type="text/javascript">
+
+		var instance = Promise.resolve(module).then(result => WebAssembly.instantiate(result, importObject));
+
+		for (i = 0; i < 10; i++)
+		{
+			var start = performance.now();
+
+			Promise.resolve(instance).then(result => result.exports.exported_func());
+
+			var end = performance.now();
+
+			console.log(end - start);
+		}
+
+	</script>
+	-->
+</body>
+</html>
